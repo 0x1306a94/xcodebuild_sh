@@ -124,12 +124,12 @@ CODE_SIGN_IDENTITY="${CODE_SIGN_IDENTITY}" \
 PROVISIONING_PROFILE="${PROVISIONING_PROFILE_NAME}"
 else
 # 清理 避免出现一些莫名的错误
-xcodebuild clean -xcodeproj ${PROJECTNAME}.xcodeproj \
+xcodebuild clean -project ${PROJECTNAME}.xcodeproj \
 -configuration \
 ${CONFIGURATION} -alltargets
 
 #开始构建
-xcodebuild archive -xcodeproj ${PROJECTNAME}.xcodeproj \
+xcodebuild archive -project ${PROJECTNAME}.xcodeproj \
 -scheme ${TARGET_NAME} \
 -archivePath ${ARCHIVEPATH} \
 -configuration ${CONFIGURATION_TARGET} \
@@ -207,5 +207,5 @@ echo "导出ipa路径: ${IPAPATH}"
 
 echo "$ArchiveTime"
 echo "$ExportTime"
-exit 1
+exit 0
 
